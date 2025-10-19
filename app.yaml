@@ -1,0 +1,31 @@
+name: eduagent-signup
+services:
+  - name: web
+    environment_slug: python
+    github:
+      repo: hlee18lee46/edu     # 👈 new repo
+      branch: main
+      deploy_on_push: true
+    http_port: 8080
+    run_command: gunicorn app:app --bind 0.0.0.0:$PORT --workers 3
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    envs:
+      - key: FLASK_SECRET_KEY
+        type: SECRET
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_ACCOUNT
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_USER
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_PASSWORD
+        type: SECRET
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_WAREHOUSE
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_DATABASE
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_SCHEMA
+        scope: RUN_AND_BUILD_TIME
+      - key: SNOWFLAKE_ROLE
+        scope: RUN_AND_BUILD_TIME
