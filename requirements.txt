@@ -1,5 +1,5 @@
 # --- Flask web app stack ---
-click==8.1.7
+click==8.3.0
 Flask==3.0.3
 gunicorn==23.0.0
 itsdangerous==2.2.0
